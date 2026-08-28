@@ -12,7 +12,7 @@ import com.uap.proiv.jobs.service.JobService;
 import com.uap.proiv.jobs.service.UserJobAssignedService;
 import com.uap.proiv.jobs.service.UserService;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -77,7 +77,7 @@ public class JobControllerTest {
         userApiResponse = new UserApiResponse();
         userApiResponse.setPage(1);
         userApiResponse.setPerPage(6);
-        userApiResponse.setTotal(12);
+        userApiResponse.setTotal(2);
         userApiResponse.setTotalPages(2);
         userApiResponse.setData(users);
 
@@ -158,7 +158,7 @@ public class JobControllerTest {
 
         when(userJobAssignedService.assign()).thenReturn(userJobAssignedList);
 
-        mockMvc.perform(post("api/job/assign")
+        mockMvc.perform(post("/api/job/assign")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(assignRequest))
                 )
